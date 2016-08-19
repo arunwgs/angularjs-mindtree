@@ -1,0 +1,6 @@
+AngularJS does behind the scenes
+1. HTML loaded. Triggers script to execute which are part of it
+2. After document load, AJS looks for ng-app directive
+3. Looks for the module assoctiated with ng-app module & attaches to the element
+4. loads children DOM elements
+5. creates scope

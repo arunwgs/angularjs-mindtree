@@ -1,0 +1,26 @@
+<html ng-app="notesApp">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+</head>
+
+<body ng-controller="MainCtrl as ctrl">
+	
+	{{ctrl.message}}
+
+	<button ng-click="ctrl.changeMessage()">Change HomePage Message</button>
+
+    <script type="text/javascript">
+       angular.module('notesApp',[])
+       .controller('MainCtrl',[function(){
+
+       	var self = this;
+       	self.message = 'Hello Friday';
+       	self.changeMessage = function(){
+       		self.message = 'Making Friday Eventful';
+       	}
+       }])
+    </script>
+</body>
+
+</html>

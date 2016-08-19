@@ -1,0 +1,21 @@
+<html ng-app="notesApp">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+</head>
+
+<body ng-controller>
+
+	<h2>{{helloMsg}}</h2>
+
+
+    <script type="text/javascript">
+       angular.module('notesApp',[])
+          .controller('MainCtrl',[function(){
+          	this.helloMsg = 'Hello World';
+          }])
+
+    </script>
+</body>
+
+</html>

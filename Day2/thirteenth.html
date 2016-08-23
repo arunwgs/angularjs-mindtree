@@ -1,0 +1,33 @@
+<html ng-app="notesApp">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+</head>
+
+<body ng-controller="MainCtrl as ctrl">
+    
+    <h1>{{ctrl.name}} {{ctrl.gender}}</h1>
+
+    <form ng-submit="ctrl.onSubmitB()" name="myform">
+    	<input type="text" ng-model="ctrl.gender" required ng-minlength="4">
+    	<input type="text" ng-model="ctrl.name">
+        <input type="submit" value="Submit" ng-disabled="myform.$invalid">
+    </form>	
+
+    <script type="text/javascript">
+      angular.module("notesApp",[])
+      .controller("MainCtrl",[function(){
+      	var self = this;
+      	
+      	self.name = "Default";
+        self.gender = "male";
+
+      	self.onSubmitB = function(){
+             self.name = self.name + " " + "world";
+             self.gender = self.gender + " " + "again";
+      	};
+      }])
+    </script>
+</body>
+
+</html>

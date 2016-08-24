@@ -1,0 +1,34 @@
+<html ng-app="notesApp">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+</head>
+
+<body ng-controller="MainCtrl as ctrl">
+    <h1>Form Validation</h1>
+<!-- 
+    <form ng-submit="ctrl.submit()" name="myform1">
+          <input type="text" ng-model="ctrl.user.username" required ng-minlength="4">
+          <input type="submit" value="submit" ng-disabled="myform1.$invalid">
+    </form> -->
+    {{ctrl.chk}}
+    <form ng-submit="ctrl.submit()" name="myform2">
+    	  <input type="text" ng-model="ctrl.chk">
+          <input type="text" ng-model="ctrl.user.username" ng-required="ctrl.chk">
+          <input type="submit" value="submit" ng-disabled="myform2.$invalid">
+    </form>
+
+    <script type="text/javascript">
+      angular.module('notesApp',[])
+         .controller('MainCtrl', [function(){
+         	var self = this;
+         	self.chk = 1;
+            //self.chk = self.user.info;//"true";
+         	self.submit = function(){
+         	      console.log('User submitted data');
+            }
+         }])
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<html ng-app="exampleApp">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+<script type="text/javascript">
+angular.module("exampleApp",[])
+ .directive("demoDirective",function(){
+ 	return function(scope, element, attribute) {
+       var items = element.children();
+       for(var i = 0; i < items.length; i++){
+       	console.log(items.eq(i).text());
+
+       	if(items.eq(i).text() == "Oranges"){
+       		items.eq(i).css("font-weight","bold");
+       	}
+       }
+ 	}
+ })
+ .controller("defaultCtrl",function($scope){
+ 	//some controller code
+ })
+</script>
+
+</head>
+
+<body ng-controller="defaultCtrl">
+    <h1>JqLite</h1>
+    <h3>Fruit</h3>
+    <ol demo-directive>
+       <li>Apples</li>
+
+          	<li>Oranges</li>
+            <li>Mango</li>
+
+       <li>Green Apple</li>
+       <li>Badami Mango</li>
+    </ol>
+
+</body>
+
+</html>

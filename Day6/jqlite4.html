@@ -1,0 +1,37 @@
+<html ng-app="exampleApp">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+<script type="text/javascript">
+angular.module("exampleApp",[])
+ .directive("demoDirective",function(){
+ 	return function(scope, element, attribute) {
+      
+      var listElem = angular.element("<ol>");
+      element.append(listElem);
+
+      for(var i = 0; i < scope.names.length; i++){
+        listElem.append(angular.element("<li>")
+          .append(angular.element("<span>")
+            .text(scope.names[i])));
+      }       
+       
+     }
+ })
+ .controller("defaultCtrl",function($scope){
+ 	 $scope.names = ["Apple","Mango","Oranges"];
+ })
+</script>
+
+</head>
+
+<body ng-controller="defaultCtrl">
+    <h1>JqLite</h1>
+    <h3>Fruit</h3>
+    <div demo-directive>
+       
+    </div>
+
+</body>
+
+</html>

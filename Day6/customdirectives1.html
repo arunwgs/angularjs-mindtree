@@ -1,0 +1,67 @@
+<html ng-app="exampleApp">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<script type="text/javascript">
+angular.module("exampleApp",[])
+ .directive("unorderedList",function(){
+ 	return function(scope,element,attribute){
+
+ 		var data = scope[attribute["unorderedList"]];
+
+ 		var listElem = angular.element("<ul>");
+ 		element.append(listElem);
+
+ 		for(var i = 0; i < data.length; i++){
+ 			listElem.append(angular.element('<li>').text(data[i].name));
+ 		}
+ 	}
+ })
+ .directive("orderedList",function(){
+ 	return function(scope,element,attribute){
+ 		//Define it
+ 		//console.log("Hello World");
+ 		var data = scope[attribute["orderedList"]];
+ 		var info = attribute["info"];
+
+ 		var listElem = angular.element("<ol>");
+ 		element.append(listElem);
+
+ 		for(var i = 0; i < data.length; i++){
+ 			listElem.append(angular.element('<li>').text(scope.$eval(info,data[i])));
+ 		}
+ 	}
+ })
+  .controller("defaultCtrl",function($scope){
+  	$scope.products = [
+  	 { name:"Apples", category:"Fruit", price: 100, expiry: 10 },
+  	 { name:"Bananas", category:"Fruit", price: 200, expiry: 20 },
+  	 { name:"Oranges", category:"Fruit", price: 50, expiry: 5 }
+  	];
+
+  	$scope.items = [
+  	 { name:"Watch", category:"Wearable", price: 10000, expiry: 10 },
+  	 { name:"Raquet", category:"Sports", price: 20000, expiry: 20 },
+  	 { name:"Ball", category:"Sports", price: 500, expiry: 5 }
+  	];
+  });
+</script>
+
+</head>
+<body ng-controller="defaultCtrl">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3>Products</h3>
+		</div>
+		<div class="panel-body">
+			<div unordered-list="products" ordered-list="items" info="price | currency"></div>
+		</div>
+    </div>
+</body>
+</html>

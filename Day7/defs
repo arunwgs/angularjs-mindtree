@@ -1,0 +1,10 @@
+//Directive Defination Objects
+
+compile - 
+controller -
+link - link function of directive
+replace - specifies whether the contents of the template replce the element that directive is applied to
+restrict - how a directive is applied
+template
+scope
+trsnaclude 

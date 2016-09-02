@@ -26,5 +26,21 @@ app.controller("firstChildCtrl", function($scope){
 	};
 });
 
+app.controller("secondChildCtrl", function($scope){
+	$scope.changeCase = function(){
+		console.log("changeCase");
+		$scope.dataValue = $scope.dataValue.toLowerCase();
+	};
+  
 
+    $scope.shiftFour = function() {
+    	var result = [];
+    	console.log("shiftfour")
+    	angular.forEach($scope.dataValue.split(""),function(char,index){
+            result.push(index < 4 ? char.toUpperCase() : char) 
+    	});
+    	$scope.dataValue = result.join("");
+    }
+	
+});
 

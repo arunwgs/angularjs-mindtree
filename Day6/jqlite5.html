@@ -24,7 +24,7 @@ angular.module("exampleApp", [])
         } 
 
         var buttons = element.find("p");
-        buttons.on("click",function(e){
+        buttons.on("click mouseover",function(e){
         	element.find("li").toggleClass("bold");
         	console.log("Clicked");
         })

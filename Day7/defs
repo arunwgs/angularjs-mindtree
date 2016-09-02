@@ -1,10 +1,19 @@
 //Directive Defination Objects
 
-compile - 
+compile - for dom manupulations
 controller -
-link - link function of directive
+link - for creating watchers, setting up event handlers
 replace - specifies whether the contents of the template replce the element that directive is applied to
 restrict - how a directive is applied
 template
 scope
-trsnaclude 
+transclude - insert one part of document into another by reference
+
+PTN: Seperation of link/compile improves performance
+
+TODO revist: --- templateUrl, Transclution, Compile Function
+
+
+$scope.$digest - check is a binding value has a method.
+
+$scope.$apply - calls $digest after executing the func passed in the argument

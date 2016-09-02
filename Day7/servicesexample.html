@@ -8,17 +8,21 @@
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">     
+	
 	<script>        
 	angular.module("exampleApp", [])        
+	
 	.controller("defaultCtrl", function ($scope) {            
 		$scope.data = {                
 			cities: ["London", "New York", "Paris"],                
 			totalClicks: 0            
-		}; 
-            $scope.$watch('data.totalClicks', function (newVal) {                
+		};
+
+        $scope.$watch('data.totalClicks', function (newVal) {                
             	console.log("Total click count: " + newVal);            
-            });        
-        })        
+        });        
+    })        
+	
 	.directive("triButton", function () {            
 		return {                
 			scope: { 
@@ -27,9 +31,11 @@
 			link: function (scope, element, attrs) {                    
 				element.on("click", function (event) {                        
 					console.log("Button click: " + event.target.innerText);
-					 scope.$apply(function () {                            
+					//scope.counter++;
+					scope.$apply(function () {                            
 					 	scope.counter++;                        
 					 });                    
+					
 					});                
 				}            
 			}        
@@ -38,8 +44,9 @@
 </head> 
 <body ng-controller="defaultCtrl">    
 	<div class="well">        
-		<div class="btn-group" tri-button 
-		counter="data.totalClicks" source="data.cities">            
+		
+		<div class="btn-group" tri-button counter="data.totalClicks" source="data.cities">            
+		
 		<button class="btn btn-default"                    
 		   ng-repeat="city in data.cities">                
 		   {{city}}            
